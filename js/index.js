@@ -57,10 +57,10 @@ function swipeCardFront(completedCallback) {
     swipeCardToggle(completedCallback);
 }
 
-cardEle.addEventListener('click', function () {
-    swipeCardToggle();
-    nextCard();
-});
+// cardEle.addEventListener('click', function () {
+//     swipeCardToggle();
+//     nextCard();
+// });
 
 // Hammer.js 설정
 const cardHammerTime = new Hammer(cardEle);

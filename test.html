@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #target
+    {
+        margin-top: 100px;
+        margin-left: 100px;
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+        color: skyblue;
+    }
+</style>
+<body>
+    <div id="target">사각형</div>
+</body>
+<script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+<script>
+    let ele = document.querySelector("#target");
+    new Hammer(ele).on('swipeup', ()=>{
+        console.log('swipeup')
+    });
+    new Hammer(ele).on('swipeleft', ()=>{
+        console.log('swipeleft')
+    });
+
+</script>
+</html>

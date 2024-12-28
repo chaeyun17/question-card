@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>질문카드</title>
+</head>
+<body>
+    <div class="card-container max-100 mx-auto rounded-lg pt-4 sm:pt-12 px-6 sm:px-12">
+        <div id="card" class="card w-100 relative text-center justify-center">
+          <div class="front w-full flex items-center justify-center h-[calc(100dvh-3rem)] rounded-lg">
+            <h1 id="front-text" class="text-6xl font-bold">질문카드</h1>
+            <p id="front-index-text" class="text-center text-4xl rounded-full">X</p>
+          </div>
+          <div class="back w-full absolute top-0 left-0 h-[calc(100dvh-3rem)] flex flex-col items-center justify-center rounded-lg px-8">
+            <h2 id="back-category-text" class="text-xl">회상</h2>
+            <p id="back-question-text" class="text-xl mt-4 font-bold">인생의 터닝포인트가 있다면?</p>
+          </div>
+        </div>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

@@ -6,27 +6,29 @@
     <link rel="stylesheet" href="./css/main.css">
     <title>질문카드</title>
 </head>
-<body>
-    <div class="card-container max-100 mx-auto rounded-lg pt-4 sm:pt-12 px-6 sm:px-12">
-        <div id="card" class="card w-100 relative text-center justify-center">
-          <div class="front w-full flex items-center justify-center h-[calc(100dvh-3rem)] rounded-lg">
-            <h1 id="front-text" class="text-6xl font-bold">질문카드</h1>
-            <p id="front-index-text" class="text-center text-4xl rounded-full">X</p>
-          </div>
-          <div class="back w-full absolute top-0 left-0 h-[calc(100dvh-3rem)] rounded-lg px-8 flex flex-col">
-            <div class="flex-grow-[29] flex justify-center items-center">
-              <div class="text-center">
-                <h2 id="back-category-text" class="text-xl">회상</h2>
-                <p id="back-question-text" class="text-xl mt-4 font-bold">인생의 터닝포인트가 있다면?</p>
-              </div>
+<body class="bg-gray-100">
+    <div class="card-container max-w-lg mx-auto rounded-lg pt-4 sm:pt-12 px-6 sm:px-12">
+        <div id="card" class="card w-full relative text-center justify-center">
+            <!-- Front Side -->
+            <div class="front w-full flex items-center justify-center h-[calc(100vh-3rem)] rounded-lg">
+                <h1 class="text-6xl font-bold">질문카드</h1>
+                <p id="front-index-text" class="text-center text-4xl rounded-full">X</p>
             </div>
-            <div class="flex-grow-[1] flex justify-center items-center">
-              <p id="back-card-info-text" class="text-sm mb-4">질문카드 X</p>
+            <!-- Back Side -->
+            <div class="back w-full absolute top-0 left-0 h-[calc(100vh-3rem)] rounded-lg px-8 flex flex-col">
+                <div class="flex-grow flex justify-center items-center">
+                    <div class="text-center">
+                        <h2 id="back-category-text" class="text-xl">회상</h2>
+                        <p id="back-question-text" class="text-xl mt-4 font-bold">인생의 터닝포인트가 있다면?</p>
+                    </div>
+                </div>
+                <div class="flex-grow-0 flex justify-center items-center">
+                    <p id="back-card-info-text" class="text-sm mb-4">질문카드 X</p>
+                </div>
             </div>
-          </div>
         </div>
         <div class="absolute bottom-2 right-2 text-xs text-gray-500">
-          v1.0
+            v1.0
         </div>
     </div>
     <script src="https://cdn.tailwindcss.com"></script>

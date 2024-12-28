@@ -1,18 +1,3 @@
-var cards = [
-  {
-    "category": "회상",
-    "question": "인생의 터닝 포인트가 있다면?"
-  },
-  {
-    "category": "회상",
-    "question": "인생에서 가장 뿌듯했던 적은?"
-  },
-  {
-    "category": "회상",
-    "question": "인생에서 가장 좌절했던 적은?"
-  },
-]
-
 var cardEle = document.querySelector("#card");
 var playing = false;
 var cardIdx = 0;
@@ -20,6 +5,7 @@ var isFront = true;
 // card index 가 변경되면 html element inner text q변경.
 // vue watch 사용.
 
+cards = _.shuffle(cards);
 renderCardContent(cardIdx);
 
 function renderCardContent(cardIdx){
@@ -27,9 +13,11 @@ function renderCardContent(cardIdx){
   const backCategoryTextEle = document.querySelector("#back-category-text");
   const backQuestionTextEle = document.querySelector("#back-question-text");
   const frontIndexTextEle = document.querySelector("#front-index-text");
+  const backCardInfoText = document.querySelector("#back-card-info-text");
   backCategoryTextEle.innerText = content.category;
   backQuestionTextEle.innerText = content.question;
   frontIndexTextEle.innerText = cardIdx + 1;
+  backCardInfoText.innerText = `질문카드${cardIdx + 1}`;
 }
 
 function nextCard(){
@@ -48,8 +36,10 @@ function previousCard(){
   renderCardContent(cardIdx);
 }
 
-
-function swipeCardToggle(){
+/**
+ * 카드 뒤집기 앞면뒷면 현상태 상관 없이
+ */
+function swipeCardToggle(completedCallback){
   if(playing)
   return;
   
@@ -62,19 +52,24 @@ function swipeCardToggle(){
     duration: 400,
     complete: function(anim){
        playing = false;
+       completedCallback?.();
     }
   });
   isFront = !isFront;
 }
 
-function swipeCardFront(){
+/**
+ * 카드 뒤집기: 카드를 앞면으로만 뒤집는 액션 함수
+ */
+function swipeCardFront(completedCallback){
   if(isFront) return;
-  swipeCardToggle();
+  swipeCardToggle(completedCallback);
 }
 
 
 cardEle.addEventListener('click',function() {
   // swipeCardToggle();
+  // nextCard();
 });
 
 
@@ -96,17 +91,21 @@ cardHammerTime.on('swipedown', function() {
 cardHammerTime.on('swipeleft', function() {
   console.log('Swipe left detected!');
   // next
+  if(isFront) nextCard();
   // 뒤집힌 상태 초기화 
-  swipeCardFront();
-  // 다음 질문답변 세트
-  nextCard();
+  swipeCardFront(()=>{
+    // 다음 질문답변 세트
+    nextCard();
+  });
 });
 
 cardHammerTime.on('swiperight', function() {
   console.log('Swipe right detected!');
   // previous
-  // 뒤집하 상태 초기화
-  swipeCardFront();
-  // 이전 질문답변 세트
-  previousCard();
+  if(isFront) previousCard();
+  // 뒤집힌 상태 초기화
+  swipeCardFront(()=>{
+    // 이전 질문답변 세트
+    previousCard();
+  });
 });
